@@ -28,11 +28,18 @@ for entry in soup.select(".gerichte"):
     if "Teller" in product_name:
         product_type = "plate"
 
+    print(f"Found '{product_name}' of type '{product_type}'")
+
     content = entry.select_one(".beschreibung").find_all(string=True)[0].strip()
     price = entry.select_one(".preislabel").text.strip()
 
     if product_type != "other":
         contents = list(c.strip() for c in content.split(","))
+
+        if "Halloum" in contents: # typo fix
+            contents.remove("Halloum")
+            contents.append("Halloumi")
+
         notes = ""
     else:
         contents = []

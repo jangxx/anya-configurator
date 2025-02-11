@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: "Install scraper dependencies"
+      - name: "Install scraper dependencies and run scraper"
         run: |
           cd scraper
           python -m pip install --upgrade pip

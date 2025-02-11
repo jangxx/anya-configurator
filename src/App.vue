@@ -90,20 +90,22 @@ function createMenuTree(menu: MenuDefinition[]) {
 // 	return result.join(" | ");
 // }
 
-const styleOptions = [
-	{
-		label: "Teller",
-		value: "plate",
-	},
-	{
-		label: "Sandwich",
-		value: "sandwich",
-	},
-	{
-		label: "Anderes",
-		value: "other",
-	}
-];
+const styleOptions = computed(() => {
+	return [
+		{
+			label: "Teller",
+			value: "plate",
+		},
+		{
+			label: "Sandwich",
+			value: "sandwich",
+		},
+		{
+			label: "Anderes",
+			value: "other",
+		}
+	].filter(o => o.value in menuTree && menuTree[o.value].length > 0);
+});
 const selectedStyle = ref<string>("sandwich");
 
 const contentOptions = extractContentOptions(menuDefinition);

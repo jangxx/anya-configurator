@@ -15,6 +15,6 @@ export default defineConfig({
   },
   base: "/anya-configurator/",
   build: {
-    outDir: "docs"
+    outDir: "dist"
   }
 })
